@@ -1,0 +1,10 @@
+services:
+
+  simulado:
+    image : ldabiralai/simulado:latest
+    container_name: ${COMPOSE_PROJECT_LEAD}-${COMPOSE_PROJECT_NAME}
+    ports:
+      - ${COMPOSE_PROJECT_PORT}:80
+    volumes:
+      - ./config:/app
+    command: ./bin/simulado -f /app/mocks.json
