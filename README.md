@@ -1,7 +1,3 @@
-<div id="top-header" style="with:100%;height:auto;text-align:right;">
-    <img src="./resources/docs/images/pr-banner-long.png">
-</div>
-
 # ITX BACKEND PLATFORMS
 
 - [Exam Objetives](./resources/docs/Objetives.md)
