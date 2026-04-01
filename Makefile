@@ -61,7 +61,7 @@ network-create: ## creates network
 network-inspect: ## inspects network
 	$(DOCKER) network inspect $(PROJECT_LEAD)-$(PROJECT_CNET)
 
-network-restart: ## restart network
+network-restart: ## restart containers inside network
 	$(DOCKER) network inspect $(PROJECT_LEAD)-$(PROJECT_CNET) --format '{{range .Containers}}{{.Name}} {{end}}'
 
 # -------------------------------------------------------------------------------------------------
