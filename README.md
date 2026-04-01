@@ -93,14 +93,38 @@ $ make repo-flush                     echoes clearing commands for git repositor
 $ make repo-commit                    echoes common git commands
 ```
 
-Once you set all the `.env` variables, it is needed to execute the following for each platform because each of them need an `.env`. E.g.:
+Once you set all the `.env` variables, it is needed to execute the following for each platform because each of them need an `.env` before create the container service. E.g.:
 ```sh
 $ make grafana-set
+# Then
+$ make grafana-create
 ```
 
 Or, you can set all the platform variables at once a set their `.env` at once
 ```sh
 $ make services-set
+# Then
+$ make services-create
+```
+
+For the API:
+```sh
+$ make apirest-set
+# Then
+$ make apirest-create
+# Checkout container info for developing
+$ make apirest-info
+ITX BACKEND EXAM: NGINX + JAVA 21
+Container ID.: 511116ee3c94
+Name.........: itx-pr-api-dev
+Image........: itx-pr-api-dev:alpine3.23-nginx-java21
+CPUs.........: 2.00
+RAM..........: 256M
+SWAP.........: 512M
+Host.........: 127.0.0.1:6500
+Hostname.....: 192.168.1.41:6500
+Docker.Host..: 172.20.0.2
+NetworkID....: 2fc4830a1b14ea222ac786bd68b51d429233121c6bb1fc1ce8862e3e3cbb539e
 ```
 
 ## <a id="platforms-structure"></a>Use this Platform Repository for your own REST API repositories
@@ -160,7 +184,7 @@ Repository directories structure overview:
 │   │       │   ├── nginx
 │   │       │   │   ├── conf.d
 │   │       │   │   │   ├── .gitkeep
-│   │       │   │   │   └── default.conf
+│   │       │   │   │   └── default.conf  # required to expose the API
 │   │       │   │   ├── conf.d-sample
 │   │       │   │   │   └── default.conf
 │   │       │   │   └── nginx.conf
@@ -168,9 +192,9 @@ Repository directories structure overview:
 │   │       │   └── supervisor
 │   │       │       ├── conf.d
 │   │       │       │   ├── .gitkeep
-│   │       │       │   ├── java-dev.conf
-│   │       │       │   ├── java-jar.conf
-│   │       │       │   └── nginx.conf
+│   │       │       │   ├── java-dev.conf # required to expose the API
+│   │       │       │   ├── java-jar.conf # required to expose the API JAR
+│   │       │       │   └── nginx.conf    # required to expose the API on designated port
 │   │       │       ├── conf.d-sample
 │   │       │       │   ├── java-dev.conf
 │   │       │       │   ├── java-jar.conf
