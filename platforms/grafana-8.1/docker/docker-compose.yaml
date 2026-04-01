@@ -12,8 +12,9 @@ services:
     volumes:
       - ./config:/etc/grafana/provisioning/
     networks:
-      - itx-pr-network
+      net: {}
 
 networks:
-  itx-pr-network:
+  net:
     external: true
+    name: ${COMPOSE_PROJECT_LEAD}-${COMPOSE_PROJECT_CNET}

@@ -9,8 +9,9 @@ services:
       - ./config:/app
     command: ./bin/simulado -f /app/mocks.json
     networks:
-      - itx-pr-network
+      net: {}
 
 networks:
-  itx-pr-network:
+  net:
     external: true
+    name: ${COMPOSE_PROJECT_LEAD}-${COMPOSE_PROJECT_CNET}
