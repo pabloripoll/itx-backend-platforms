@@ -12,6 +12,8 @@ Read the `.env.example` comments that explains the variable usage target so buil
 - Copy `.env.example` *(or the `.env.example-clean`)* to `.env` and adjust platforms settings (rest api port, grafana port, k6 port, container RAM usage, etc.). The example environment file has already tested the minimum required resources
 
 - By default, your local machine port 5000 will be used for the project as it is required by the exam. The other ports are editable.
+
+- You can now clone the REST API repository before continuing. Follow the [REST API Installation](#rest-api-installation)
 <br>
 
 ### Automation by Makefile
