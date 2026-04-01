@@ -2,6 +2,8 @@
 # https://hub.docker.com/_/eclipse-temurin/
 
 FROM eclipse-temurin:21-alpine
+#FROM eclipse-temurin:21-jre-alpine
+#FROM amazoncorretto:21-alpine
 
 ARG UID
 ARG GID
@@ -64,7 +66,7 @@ RUN chown -R ${USER}:${GROUP} /var/www /run /var/lib/nginx /var/log/nginx
 USER ${USER}
 
 # Expose ports (http, app)
-EXPOSE 80 8080 8081
+EXPOSE 80 8080 8081 5000
 
 # Let supervisord start nginx & java
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
