@@ -76,7 +76,7 @@ services-create: ## builds and starts up all container services
 	$(MAKE) apirest-create grafana-create k6-create influxdb-create simulado-create
 
 services-info: ## shows all container services information
-	$(MAKE) apirest-info grafana-info k6-info influxdb-info simulado-info
+	$(MAKE) apirest-info grafana-info influxdb-info simulado-info
 
 services-start: ## starts all container services
 	$(MAKE) apirest-start grafana-start k6-start influxdb-start simulado-start

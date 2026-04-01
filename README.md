@@ -1,17 +1,17 @@
 # ITX BACKEND PLATFORMS
 
 - [Exam Objetives](./resources/docs/Objetives.md)
-- [Platforms Start Up](#platforms-start-up)
+- [Platforms Set Up](#platforms-set-up)
 - [Platforms Structure](#platforms-structure)
 - [REST API Installation](#rest-api-installation)
 
-## <a id="platforms-start-up"></a>Use this Platform Repository for your own REST API repositories
+## <a id="platforms-set-up"></a>Platforms set up
 
-Set up platforms. Read the `.env.example` comment that explains the variable usage so building all the containers required can be automated.
+Read the `.env.example` comments that explains the variable usage target so building all the containers required can be automated.
 
-- Copy `.env.example` (or `.env.example-clean`) to `.env` and adjust platforms settings (rest api port, grafana port, k6 port, container RAM usage, etc.)
+- Copy `.env.example` *(or the `.env.example-clean`)* to `.env` and adjust platforms settings (rest api port, grafana port, k6 port, container RAM usage, etc.). The example environment file has already tested the minimum required resources
 
-- By configuring the REST API container with e.g. `APIREST_CAAS_MEM=128M` *(CAAS = Container As A Service)*, remember to set the same RAM value into container local configuration files that will be mounted into the container.
+- By default, your local machine port 5000 will be used for the project as it is required by the exam. The other ports are editable.
 <br>
 
 ### Automation by Makefile
@@ -66,6 +66,7 @@ $ make k6-start                       starts the container running
 $ make k6-stop                        stops the container but its assets will not be destroyed
 $ make k6-restart                     restarts the running container
 $ make k6-destroy                     destroys completly the container
+$ make k6-tests-run                   runs the tests in container # run the E2E tests
 
 $ make influxdb-hostcheck             shows this project ports availability on local machine for container
 $ make influxdb-info                  shows the docker related information
@@ -95,24 +96,28 @@ $ make repo-commit                    echoes common git commands
 
 Once you set all the `.env` variables, it is needed to execute the following for each platform because each of them need an `.env` before create the container service. E.g.:
 ```sh
-$ make grafana-set
-# Then
-$ make grafana-create
+$ make services-set
 ```
 
-Or, you can set all the platform variables at once a set their `.env` at once
+Or, you can set each platform variables individually to set its `.env`. E.g.:
 ```sh
-$ make services-set
-# Then
+$ make grafana-set
+```
+
+Before building the containers, create the Docker shared network
+```sh
+$ make network-create
+# See the network created
+$ make network-inspect
+```
+
+Now, you can build and run all the containers
+```sh
 $ make services-create
 ```
 
-For the API:
+To know each container information you can execute `$ make services-info` *(except k6 container that is not continuously running)* or by each container, as e.g. the API:
 ```sh
-$ make apirest-set
-# Then
-$ make apirest-create
-# Checkout container info for developing
 $ make apirest-info
 ITX BACKEND EXAM: NGINX + JAVA 21
 Container ID.: 511116ee3c94
@@ -126,6 +131,18 @@ Hostname.....: 192.168.1.41:6500
 Docker.Host..: 172.20.0.2
 NetworkID....: 2fc4830a1b14ea222ac786bd68b51d429233121c6bb1fc1ce8862e3e3cbb539e
 ```
+
+Once the container are built, restart the shared network
+```sh
+$ make network-restart
+# See the network updated
+$ make network-inspect
+```
+
+To follow the project evaluation, follow the REST API README.md, once the repository has been cloned, inside the `./apirest` directory.
+
+Don't forget to follow the REST API cloning repository documentation: [REST API Installation](#rest-api-installation)
+<br><br>
 
 ## <a id="platforms-structure"></a>Use this Platform Repository for your own REST API repositories
 

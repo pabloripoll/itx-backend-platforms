@@ -6,7 +6,7 @@ We already have an endpoint that provides the product Ids similar for a given on
 
 **Create a Spring boot application that exposes the agreed REST API on port 5000.**
 
-![Diagram](./assets/diagram.jpg "Diagram")
+![Diagram](./images/diagram.jpg "Diagram")
 
 Note that _Test_ and _Mocks_ components are given, you must only implement _yourApp_.
 
