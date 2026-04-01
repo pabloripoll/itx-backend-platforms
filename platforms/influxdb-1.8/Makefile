@@ -89,10 +89,7 @@ else
 	COMPOSE_PROJECT_PORT=$(DOCKER_PORT)\r\n\
 	COMPOSE_PROJECT_CPUS=\"$(DOCKER_CPUS)\"\r\n\
 	COMPOSE_PROJECT_MEM=\"$(DOCKER_MEM)\"\r\n\
-	COMPOSE_PROJECT_SWAP=\"$(DOCKER_SWAP)\"\r\n\
-	POSTGRES_DATABASE=$(SQL_NAME)\r\n\
-	POSTGRES_USER=$(SQL_USER)\r\n\
-	POSTGRES_PASSWORD=\"$(SQL_PASS)\""> ./docker/.env;
+	COMPOSE_PROJECT_SWAP=\"$(DOCKER_SWAP)\""> ./docker/.env;
 	echo ${C_BLU}"$(PROJECT_NAME)"${C_END}" DATABASE "${C_YEL}$(DOCKER_PLTF)${C_END}" - "${C_YEL}"docker-compose.yml"${C_END}" .env file "${C_GRN}"has been set."${C_END};
 	echo ${C_BLU}"$(PROJECT_NAME)"${C_END}" DATABASE "${C_YEL}$(DOCKER_PLTF)${C_END}" - Container name: "${C_GRN}$(DOCKER_CONTAINER)${C_END}
 	echo ${C_BLU}"$(PROJECT_NAME)"${C_END}" DATABASE "${C_YEL}$(DOCKER_PLTF)${C_END}" - Container image: "${C_GRN}$(DOCKER_CONTAINER):$(DOCKER_IMGK)${C_END}
