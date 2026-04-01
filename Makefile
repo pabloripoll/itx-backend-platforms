@@ -237,6 +237,9 @@ k6-destroy: ## destroys completly the container
 		fi \
 	fi
 
+k6-tests-run: ## runs the tests in container
+	cd platforms/$(K6_PLTF) && $(MAKE) tests-run
+
 # -------------------------------------------------------------------------------------------------
 #  InfluxDB Service
 # -------------------------------------------------------------------------------------------------

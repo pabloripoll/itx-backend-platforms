@@ -149,3 +149,6 @@ dev: ## sets a development enviroment
 
 network:
 	cd docker && $(DOCKER_COMPOSE) -f docker-compose.yml -f docker-compose.network.yml up -d
+
+tests-run: ## runs the tests in container
+	cd docker && $(DOCKER_COMPOSE) run --rm k6 run /scripts/test.js
