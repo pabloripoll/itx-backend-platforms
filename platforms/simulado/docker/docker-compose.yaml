@@ -8,3 +8,9 @@ services:
     volumes:
       - ./config:/app
     command: ./bin/simulado -f /app/mocks.json
+    networks:
+      - itx-pr-network
+
+networks:
+  itx-pr-network:
+    external: true

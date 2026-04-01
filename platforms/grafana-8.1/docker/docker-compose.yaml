@@ -11,3 +11,9 @@ services:
       - GF_AUTH_BASIC_ENABLED=false
     volumes:
       - ./config:/etc/grafana/provisioning/
+    networks:
+      - itx-pr-network
+
+networks:
+  itx-pr-network:
+    external: true

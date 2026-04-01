@@ -65,6 +65,9 @@ services-start: ## starts all container services
 services-stop: ## stops all container services
 	$(MAKE) apirest-stop grafana-stop k6-stop influxdb-stop simulado-stop
 
+services-restart: ## restarts all container services
+	$(MAKE) apirest-restart grafana-restart k6-restart influxdb-restart simulado-restart
+
 services-destroy: ## destroys all container services
 	$(MAKE) apirest-destroy grafana-destroy k6-destroy influxdb-destroy simulado-destroy
 

@@ -1,8 +1,18 @@
 services:
-  influxdb:
-    image: influxdb:1.8.2
+  k6:
+    image: loadimpact/k6:0.28.0
     container_name: ${COMPOSE_PROJECT_LEAD}-${COMPOSE_PROJECT_NAME}
     ports:
-      - ${COMPOSE_PROJECT_PORT}:8086
+      - ${COMPOSE_PROJECT_PORT}:6565
+    volumes:
+      - ./config:/scripts
     environment:
-      - INFLUXDB_DB=k6
+      - K6_OUT=influxdb=http://itx-pr-influxdb-dev:8086/k6
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - itx-pr-network
+
+networks:
+  itx-pr-network:
+    external: true
